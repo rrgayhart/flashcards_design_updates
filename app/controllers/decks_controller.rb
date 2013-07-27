@@ -6,7 +6,7 @@ class DecksController < ApplicationController
 	end
 
 	def show
-		@deck = current_user.decks.find(params[:id])
+		@deck = find_deck
 		@cards = @deck.cards
 	end
 
@@ -21,18 +21,24 @@ class DecksController < ApplicationController
 	end
 
 	def edit
-		@deck = current_user.decks.find(params[:id])
+		@deck = find_deck
 	end
 
 	def update
-		@deck = current_user.decks.find(params[:id])
+		@deck = find_deck
 		@deck.update_attributes(params[:deck])	
 		redirect_to @deck
 	end
 
 	def destroy
-		@deck = current_user.decks.find(params[:id])
+		@deck = find_deck
 		@deck.destroy
 		redirect_to decks_path
+	end
+
+	private
+
+	def find_deck
+		current_user.decks.find(params[:id])
 	end
 end

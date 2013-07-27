@@ -1,4 +1,5 @@
 class CardsController < ApplicationController
+	before_filter :authenticate
 	def show
 		@deck = find_deck
 		@card = find_card(@deck)
