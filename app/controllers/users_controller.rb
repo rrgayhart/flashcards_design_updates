@@ -4,5 +4,8 @@ class UsersController < ApplicationController
 	end
 
 	def create
+		@user = User.new(params[:user])
+		@user.save
+		redirect_to decks_path
 	end
 end
