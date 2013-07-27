@@ -12,4 +12,14 @@ class ApplicationController < ActionController::Base
   def sign_in user
   	cookies.signed[:user_id] = user.id
   end
+
+  def authenticate
+  	if !signed_in?
+  		redirect_to new_session_path
+  	end
+  end
+
+  def signed_in?
+  	current_user 
+  end
 end
