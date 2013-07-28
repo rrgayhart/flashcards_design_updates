@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def sign_in user
-  	cookies.signed[:user_id] = user.id
+  	   cookies.signed[:user_id] = user.id
   end
 
   def authenticate
